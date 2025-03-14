@@ -1,9 +1,10 @@
 using JetBrains.Annotations;
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodManager : MonoBehaviour
+public class FoodManager : NetworkBehaviour
 {
     [SerializeField]
     public GameObject Food;

@@ -2,37 +2,47 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
-using UnityEditor;
+using Mirror;
 
-
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : NetworkBehaviour
 {
 	[SerializeField] public float startSpeed = 5f;
-	private float speed;
 	[SerializeField] public int mass = 5;
-	private int totalMass = 5;
-	private int kills = 0;
 	[SerializeField] public TMP_Text massText;
 	[SerializeField] public TMP_Text totalMassText;
 	[SerializeField] float centerMassRadius = 1.5f;
-	
+	private float speed;
+	private int totalMass = 5;
+	private int kills = 0;
+	private Rigidbody2D rb;
+	private Camera mainCam;
+
 	private static List<PlayerScript> allPlayers = new List<PlayerScript>();
 
 	private void Start()
 	{
 		allPlayers.Add(this);
+
+		rb = GetComponent<Rigidbody2D>();
+
+		rb.gravityScale = 0;
+		rb.freezeRotation = true;
+		rb.velocity = Vector2.zero;
 	}
 
 	void Update()
 	{
-
-		MovePlayer();
-		UpdateSize();
-		UpdateLayerOrder();
-		EatPlayerCheck();
-		massText.text = mass.ToString();
-		totalMassText.text = totalMass.ToString();
+		if (isLocalPlayer)
+		{
+			MovePlayer();
+			UpdateSize();
+			UpdateLayerOrder();
+			EatPlayerCheck();
+			massText.text = mass.ToString();
+			totalMassText.text = totalMass.ToString();
+		}
 	}
+
 	void MovePlayer()
 	{
 		float moveX = Input.GetAxisRaw("Horizontal");
@@ -40,10 +50,9 @@ public class PlayerScript : MonoBehaviour
 
 		Vector3 moveDir = new Vector3(moveX, moveY, 0).normalized;
 
-
 		speed = Mathf.Max(1f, startSpeed - (mass * 0.02f)); //logarithmic slow based on mass
 
-		transform.position += moveDir * speed * Time.deltaTime;
+		CmdMovePlayer(transform.position += moveDir * speed * Time.deltaTime);
 	}
 
 	void EatPlayerCheck()
@@ -76,7 +85,7 @@ public class PlayerScript : MonoBehaviour
 	{
 		//save kills
 		//save total mass
-		//count round played
+		//count rounds played
 
 		allPlayers.Remove(this);
 	}
@@ -94,7 +103,7 @@ public class PlayerScript : MonoBehaviour
 
 	public void EatFood()
 	{
-		if(mass < 100)
+		if (mass < 100)
 		{
 			mass += 1;
 			totalMass += 1;
@@ -114,5 +123,11 @@ public class PlayerScript : MonoBehaviour
 			mass--;
 			yield return new WaitForSeconds(0f);
 		} while (mass > 50);
+	}
+
+	[Command]
+	void CmdMovePlayer(Vector3 newPosition)
+	{
+		transform.position = newPosition;
 	}
 }
