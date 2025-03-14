@@ -2,15 +2,20 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using UnityEditor;
 
 
 public class PlayerScript : MonoBehaviour
 {
-	[SerializeField] public float speed = 3f;
+	[SerializeField] public float startSpeed = 5f;
+	private float speed;
 	[SerializeField] public int mass = 5;
+	private int totalMass = 5;
+	private int kills = 0;
 	[SerializeField] public TMP_Text massText;
+	[SerializeField] public TMP_Text totalMassText;
 	[SerializeField] float centerMassRadius = 1.5f;
-
+	
 	private static List<PlayerScript> allPlayers = new List<PlayerScript>();
 
 	private void Start()
@@ -26,6 +31,7 @@ public class PlayerScript : MonoBehaviour
 		UpdateLayerOrder();
 		EatPlayerCheck();
 		massText.text = mass.ToString();
+		totalMassText.text = totalMass.ToString();
 	}
 	void MovePlayer()
 	{
@@ -33,6 +39,10 @@ public class PlayerScript : MonoBehaviour
 		float moveY = Input.GetAxisRaw("Vertical");
 
 		Vector3 moveDir = new Vector3(moveX, moveY, 0).normalized;
+
+
+		speed = Mathf.Max(1f, startSpeed - (mass * 0.02f)); //logarithmic slow based on mass
+
 		transform.position += moveDir * speed * Time.deltaTime;
 	}
 
@@ -40,11 +50,11 @@ public class PlayerScript : MonoBehaviour
 	{
 		foreach (PlayerScript otherPlayer in allPlayers)
 		{
-			if (otherPlayer == this) continue; // Skip self-check
+			if (otherPlayer == this) continue;
 
 			float distance = Vector2.Distance(this.transform.position, otherPlayer.transform.position);
 
-			if (distance < centerMassRadius && this.mass > otherPlayer.mass) // Ensure the attacker is bigger
+			if (distance < centerMassRadius && this.mass > otherPlayer.mass) //ensure the attacker is bigger
 			{
 				EatPlayer(otherPlayer);
 			}
@@ -55,16 +65,19 @@ public class PlayerScript : MonoBehaviour
 	{
 		Debug.Log($"{target.name} was eaten by {this.name}!");
 
-		
+		kills++;
 		this.mass += target.mass / 2;
 
-		
 		allPlayers.Remove(target);
 		Destroy(target.gameObject);
 	}
 
 	void OnDestroy()
 	{
+		//save kills
+		//save total mass
+		//count round played
+
 		allPlayers.Remove(this);
 	}
 
@@ -84,6 +97,7 @@ public class PlayerScript : MonoBehaviour
 		if(mass < 100)
 		{
 			mass += 1;
+			totalMass += 1;
 			UpdateSize();
 		}
 		else if (mass >= 100)
