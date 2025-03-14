@@ -11,9 +11,11 @@ public class PlayerScript : NetworkBehaviour
 	[SerializeField] public TMP_Text massText;
 	[SerializeField] public TMP_Text totalMassText;
 	[SerializeField] float centerMassRadius = 1.5f;
+	public string username = "";
+	public int totalMass = 5;
+	public int gamesPlayed;
+	public int kills;
 	private float speed;
-	private int totalMass = 5;
-	private int kills = 0;
 	private Rigidbody2D rb;
 	private Camera mainCam;
 

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodManager : NetworkBehaviour
+public class FoodManager : MonoBehaviour
 {
     [SerializeField]
     public GameObject Food;

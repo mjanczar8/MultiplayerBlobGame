@@ -1,7 +1,7 @@
 using Mirror;
 using UnityEngine;
 
-public class FoodScript : NetworkBehaviour
+public class FoodScript : MonoBehaviour
 {
 	private FoodManager _foodManager;
 
