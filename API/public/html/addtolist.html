@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        body {background-color: slategray;color:white;}
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Final || Add to List</title>
+</head>
+<body>
+    <h1>
+        Add to Player List
+    </h1>
+    
+    <form action="/addtolist" method="POST">
+        <label for="userName">Username:</label>
+        <br>
+        <input type="text" id="userName" name="userName">
+        <br>
+        <label for="gamesPlayed">Games Played:</label>
+        <br>
+        <input type="text" id="gamesPlayed" name="gamesPlayed">
+        <br><br>
+        <label for="highestMass">Highest Mass:</label>
+        <br>
+        <input type="text" id="highestMass" name="highestMass">
+        <br><br>
+        <label for="kills">Kills:</label>
+        <br>
+        <input type="text" id="kills" name="kills">
+        <br><br>
+        <button type="submit">Add Player</button>
+        <br>
+        <a  href="/">Go Back</a>
+    </form> 
+</body>
+
+<script src="/public/js/edit.js"> </script>
+
+</html>
+
