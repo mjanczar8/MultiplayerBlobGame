@@ -124,12 +124,10 @@ app.post("/sentdatatodb", async (req,res)=>{
 
         const newPlayer = new Player({
             playerid:nanoid(8),
-            screenName:newPlayerData.screenName,
-            firstName:newPlayerData.firstName,
-            lastName:newPlayerData.lastName,
-            dateStartedPlaying:newPlayerData.dateStartedPlaying,
-            score:newPlayerData.score
-
+            userName:newPlayerData.screenName,
+            gamesPlayed:newPlayerData.gamesPlayed,
+            highestMass:newPlayerData.highestMass,
+            kills:newPlayerData.kills,
         });
         //save to database
         await newPlayer.save();
