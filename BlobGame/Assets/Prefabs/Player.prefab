@@ -409,6 +409,10 @@ MonoBehaviour:
   massText: {fileID: 5973444516052941948}
   totalMassText: {fileID: 2473762337124470323}
   centerMassRadius: 1.5
+  username: 
+  totalMass: 5
+  gamesPlayed: 0
+  kills: 0
 --- !u!114 &3467123839376444252
 MonoBehaviour:
   m_ObjectHideFlags: 0

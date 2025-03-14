@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using Mirror;
+using Mirror.Examples.TopDownShooter;
 
 public class PlayerScript : NetworkBehaviour
 {
@@ -18,6 +19,8 @@ public class PlayerScript : NetworkBehaviour
 	private float speed;
 	private Rigidbody2D rb;
 	private Camera mainCam;
+	private CameraTopDown topDown;
+	private Transform plrTransform;
 
 	private static List<PlayerScript> allPlayers = new List<PlayerScript>();
 
@@ -25,11 +28,17 @@ public class PlayerScript : NetworkBehaviour
 	{
 		allPlayers.Add(this);
 
+		plrTransform = GetComponent<Transform>();
+		mainCam = GameObject.Find("MainCamera").GetComponent<Camera>();
+		topDown = mainCam.GetComponent<CameraTopDown>();
 		rb = GetComponent<Rigidbody2D>();
 
 		rb.gravityScale = 0;
 		rb.freezeRotation = true;
 		rb.velocity = Vector2.zero;
+
+		topDown.playerTransform = plrTransform;
+		
 	}
 
 	void Update()
