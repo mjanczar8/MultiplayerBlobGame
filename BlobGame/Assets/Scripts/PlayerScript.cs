@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections.Generic;
 using Mirror;
 using Mirror.Examples.TopDownShooter;
+using UnityEngine.UIElements;
 
 public class PlayerScript : NetworkBehaviour
 {
@@ -64,7 +65,9 @@ public class PlayerScript : NetworkBehaviour
 		speed = Mathf.Max(1f, startSpeed - (mass * 0.02f)); //logarithmic slow based on mass
 
 		CmdMovePlayer(transform.position += moveDir * speed * Time.deltaTime);
-	}
+
+        
+    }
 
 	void EatPlayerCheck()
 	{

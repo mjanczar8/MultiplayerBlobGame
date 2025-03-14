@@ -1,4 +1,4 @@
-Library: D:\Unity\Projects\MultiplayerBlobGame\BlobGame\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+Library: C:\Users\cathj\OneDrive\Documents\GitHub\MultiplayerBlobGame\BlobGame\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --platform=Windows
 --backend=burst-llvm-16
 --target=X64_SSE2
@@ -61,10 +61,10 @@ Library: D:\Unity\Projects\MultiplayerBlobGame\BlobGame\Temp\BurstOutput\Data\Pl
 --assembly-defines=mscorlib;
 --linker-options=PdbAltPath="BlobGame_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=D:\Unity\Projects\MultiplayerBlobGame\BlobGame\Temp\Burst
---key-folder=D:/Unity/Unity Hub/Versions/2022.3.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=D:\Unity\Projects\MultiplayerBlobGame\BlobGame\Library\Burst
---output=D:\Unity\Projects\MultiplayerBlobGame\BlobGame\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--temp-folder=C:\Users\cathj\OneDrive\Documents\GitHub\MultiplayerBlobGame\BlobGame\Temp\Burst
+--key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
+--decode-folder=C:\Users\cathj\OneDrive\Documents\GitHub\MultiplayerBlobGame\BlobGame\Library\Burst
+--output=C:\Users\cathj\OneDrive\Documents\GitHub\MultiplayerBlobGame\BlobGame\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10
@@ -160,10 +160,10 @@ Library: D:\Unity\Projects\MultiplayerBlobGame\BlobGame\Temp\BurstOutput\Data\Pl
 --assembly-defines=mscorlib;
 --linker-options=PdbAltPath="BlobGame_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=D:\Unity\Projects\MultiplayerBlobGame\BlobGame\Temp\Burst
---key-folder=D:/Unity/Unity Hub/Versions/2022.3.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
---decode-folder=D:\Unity\Projects\MultiplayerBlobGame\BlobGame\Library\Burst
---output=D:\Unity\Projects\MultiplayerBlobGame\BlobGame\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
+--temp-folder=C:\Users\cathj\OneDrive\Documents\GitHub\MultiplayerBlobGame\BlobGame\Temp\Burst
+--key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.27f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
+--decode-folder=C:\Users\cathj\OneDrive\Documents\GitHub\MultiplayerBlobGame\BlobGame\Library\Burst
+--output=C:\Users\cathj\OneDrive\Documents\GitHub\MultiplayerBlobGame\BlobGame\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10

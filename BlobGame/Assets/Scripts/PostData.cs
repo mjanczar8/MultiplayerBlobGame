@@ -9,30 +9,34 @@ public class PostData : MonoBehaviour
 	string serverUrl = "http://localhost:3000/sentdatatodb";
 	PlayerData player;
 
-	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	void Start()
+    private PlayerScript ps;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
 	{
-	}
+        ps = GetComponent<PlayerScript>();
 
-	// Update is called once per frame
-	void Update()
-	{
+        player = new PlayerData();
 
-	}
+        player.userName = ps.username;
 
-	public void SetupPlayerData(string userName, int gamesPlayed, int highestMass, int kills)
+        Debug.Log($"Player data: {player.userName}, {player.gamesPlayed}, {player.highestMass}, {player.kills}");
+        StartCoroutine(PostPlayerData(JsonUtility.ToJson(player)));
+    }
+
+
+	public void SetupPlayerData(string userName)
 	{
 		player = new PlayerData();
 
 		player.userName = userName;
-		player.gamesPlayed = gamesPlayed;
-		player.highestMass = highestMass;
-		player.kills = kills;
+        player.gamesPlayed = ps.gamesPlayed;
+        player.highestMass = ps.totalMass;
+        player.kills = ps.kills;
 
-		string json = JsonUtility.ToJson(player);
+        string json = JsonUtility.ToJson(player);
 		Debug.Log(json);
 		StartCoroutine(PostPlayerData(json));
-
 	}
 
 	IEnumerator PostPlayerData(string json)
@@ -69,6 +73,5 @@ public class PostData : MonoBehaviour
 		if (index < 12) return "";
 		int endIndex = jsonResponse.IndexOf("\"", index);
 		return jsonResponse.Substring(index, endIndex - index);
-
 	}
 }
